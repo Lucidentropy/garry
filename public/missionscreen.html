@@ -1,0 +1,277 @@
+<html>
+<head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,700,400italic' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html, body, div, span {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+            position:relative;
+        }
+        body {
+            height: auto;
+            font-family: 'Titillium Web', sans-serif;
+            padding:0px;
+            overflow-x: hidden;
+        }
+        html {
+            box-sizing: border-box;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        .container {
+            width:1000px;
+            margin:0 auto;
+            max-width:100%;
+        }
+
+        .container > div {
+            margin:1em 0;
+        }
+
+        #missionlist {
+            border:1px solid #222;
+            border-radius:.25em;
+
+        }
+
+        #missionlist > p {
+            background-color:#ddd;
+            font-weight:bold;
+            padding:0 1em;
+        }
+
+        #missionlist > div  {
+            border:1px solid #333;
+            margin:3px;
+            padding:1em;
+            border-radius:.25em;
+        }
+
+        #missionlist h2 {
+            margin:0;
+        }
+
+        #crew {
+            float:left;
+            width:30%;
+            padding-right:.25em;
+        }
+
+        #crew ul { list-style:none inside none; padding:0; margin:0; }
+
+        #crew li {
+            border:1px solid #ccc;
+            border-radius:.25em;
+            background-color:#eee;
+            padding:4px;
+            position:relative;
+            overflow:hidden;
+            margin-bottom:.25em;
+        }
+
+        #crew .name {
+            font-weight:bold;
+            display:block;
+        }
+
+        #crew .rank {
+            position:absolute;
+            top:4px;
+            right:4px;
+            font-size:.75em;
+        }
+
+        #crew .skill1,
+        #crew .skill2,
+        #crew .skill3 {
+            float:left;
+            display:block;
+            border:1px solid #bbb;
+            padding:0 2px;
+            border-radius:.25em;
+            text-align:center;
+            margin:2px;
+            font-size:.75em;
+            width:30px;
+            height:20px;
+            line-height:20px;
+        }
+
+        #crew .perk {
+            float:left;
+            display:block;
+            font-size:.75em;
+            margin-left:.5em;
+            height:22px;
+            line-height:22px;
+        }
+
+        #mission {
+            border:1px solid #222;
+            border-radius:.25em;
+
+            float:left;
+            width:70%;
+            padding:1em;
+        }
+
+        #mission h2 {
+            margin:0 0 .25em;
+        }
+
+        #mission .highlight-box {
+            border:1px solid #ddd;
+            border-radius:.25em;
+            padding:.25em;
+        }
+
+        #mission h4 {
+            margin:1em 0;
+        }
+
+        #crewbox {
+            overflow:hidden;
+            text-align:center;
+        }
+
+        #crewbox > div {
+            background:#efefef;
+            height:50px;
+            width:50px;
+            border:1px solid #000;
+            border-radius:.25em;
+            margin:.25em;
+            box-shadow:1px 1px 2px #333;
+            display:inline-block;
+        }
+
+        #crewbox > div.required-engineer {
+            border:2px solid #00F;
+            box-shadow:1px 1px 2px #00f;
+        }
+        #crewbox > div.required-scientist {
+            border:2px solid #0FF;
+            box-shadow:1px 1px 2px #0fF;
+        }
+
+        #summarybox {
+            border-radius:100 .25em .25em 100 !important;
+            background:#eee;
+        }
+
+        #summarybox > div {
+            display:inline-block;
+            height:60px;
+            width:60px;
+            text-align:center;
+            line-height:60px;
+            border-radius:100%;
+            border:1px solid #555;
+            background:#fff;
+            margin-right:.5em;
+        }
+
+        body #missionchance_overall {
+            height:100px;
+            width:100px;
+            line-height:100px;
+            margin-right:1em;
+            font-size:2em;
+        }
+
+        #missiongo {
+            float:right;
+            margin:2.5em 2em;
+            height:3em;
+            line-height:3em;
+            padding:0 2em;
+            border-radius:.25em;
+            font-family: inherit;
+            background-color:#333;
+            color:#fff;
+            border:1px solid #333;
+            text-shadow:1px 1px 1px #000;
+            cursor:pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="missionlist">
+            <p>Spacebase 1</p>
+            <div>
+                <h2>Salvage Crashed Satellite</h2>
+                <span class="type">Salvage</span>
+                <span class="duraction">2 days</span>
+            </div>
+            <p>Spacebase Dos</p>
+        </div>
+
+        <div id="crew">
+            <ul>
+                <li>
+                    <span class="name">Matt Burch</span> <span class="rank">Rank 3 <span title="">Pilot</span></span>
+                    <span class="skill1">3</span> <span class="skill2">9</span> <span class="skill3">1</span> <span class="perk">Salvager</span>
+                </li>
+                <li>
+                    <span class="name">Big McLargeHuge</span> <span class="rank">Rank 10 <span title="">Military</span></span>
+                    <span class="skill1">3</span> <span class="skill2">9</span> <span class="skill3">10</span> <span class="perk"></span>
+                </li>
+                <li>
+                    <span class="name">Bill Murray</span> <span class="rank">Rank 6 <span title="">Engineer</span></span>
+                    <span class="skill1">3</span> <span class="skill2">9</span> <span class="skill3">1</span> <span class="perk">Efficient</span>
+                </li>
+                <li>
+                    <span class="name">Jim Beam</span> <span class="rank">Rank 1 <span title="">Engineer</span></span>
+                    <span class="skill1">3</span> <span class="skill2">9</span> <span class="skill3">1</span> <span class="perk"><em>No Perks</em></span>
+                </li>
+                <li>
+                    <span class="name">Bill Nye</span> <span class="rank">Rank 11 <span title="">Scientist</span></span>
+                    <span class="skill1">3</span> <span class="skill2">9</span> <span class="skill3">1</span> <span class="perk">Analyst</span>
+                </li>
+            </ul>
+        </div>
+        <div id="mission">
+            <h2>Mission</h2>
+            <h4>Briefing</h4>
+            <p>Lots of text describing the mission. Lots of text describing the mission. Lots of text describing the mission. Lots of text describing the mission. Lots of text describing the mission. Lots of text describing the mission. Lots of text describing the mission. Lots of text describing the mission. </p>
+            <h4>Assemble Team</h4>
+
+            <div id="crewbox" class="highlight-box">
+                <div class="required-engineer"></div>
+                <div class="required-engineer"></div>
+                <div class="required-scientist"></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <h4>Choose Vehicle(s)</h4>
+            <div id="vehiclebox" class="highlight-box">
+                <p><em>There are no vehicles applicable for this mission</em></p>
+            </div>
+
+            <h4>Mission Summary</h4>
+            <div id="summarybox" class="highlight-box">
+                <div id="missionchance_overall">97%</div>
+                <div id="missionchance_engineering">100%</div>
+                <div id="missionchance_research">95%</div>
+                <div id="missionchance_military">100%</div>
+
+                <input id="missiongo" type="button" value="Start Mission" />
+            </div>
+
+
+        </div>
+
+    </div>
+</body>
+</html>
